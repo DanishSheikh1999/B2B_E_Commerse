@@ -11,6 +11,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 
 import 'dart:io';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 class SignUp_C extends StatefulWidget {
   SignUp_C({this.uid});
   
@@ -48,7 +50,7 @@ class _SignUpState extends State<SignUp_C> {
     final Reference ref = FirebaseStorage.instance.ref().child('/profilepics/${widget.uid}.jpg');
    await ref.putFile(_image);
    picUrl = (await ref.getDownloadURL()).toString();
-   print(picUrl);
+   print("PicUrl - "+picUrl);
   }
   @override
   Widget build(BuildContext context) {
@@ -280,7 +282,8 @@ class _SignUpState extends State<SignUp_C> {
                                     name: name,phone: phone_number,pan: pan,gst: gst,pincode: pincode,
                                     address: address_line,picUrl: picUrl
                                   ));
-                                  
+                                  SharedPreferences pref = await SharedPreferences.getInstance();
+                                  pref.setBool("Registered", true);
                                   Navigator.pushReplacement(context, 
                                   MaterialPageRoute(builder: (context)=>Home()));
                                 }
