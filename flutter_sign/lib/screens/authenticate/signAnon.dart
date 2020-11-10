@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sign/Custom_builds/rounded_button_with_gradient.dart';
 import 'package:flutter_sign/screens/home/home.dart';
+import 'package:flutter_sign/screens/wrapper.dart';
 import 'package:flutter_sign/services/firebase_auth.dart';
 import 'package:flutter_sign/Custom_builds/custom_form_fields.dart';
 
@@ -188,7 +189,12 @@ class _SignInAnonState extends State<SignInAnon> {
                                 if (result == null)
                                   print("Error");
                                 else
-                                  print(result);
+                                 Navigator.pushAndRemoveUntil(
+                                                   context,
+                                                  MaterialPageRoute(builder: (context) => Home()),
+                                                  (Route<dynamic> route) => false,
+                                                );
+                                  
                               },
                               padding: const EdgeInsets.all(0.0),
                               color: Colors.white,

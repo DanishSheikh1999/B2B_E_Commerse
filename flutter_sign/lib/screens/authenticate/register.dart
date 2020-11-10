@@ -206,8 +206,10 @@ class _SignUpState extends State<SignUp> {
                                 dynamic usercred = await _auth.googleSignIn();
                                 if(usercred==null)
                                   print("Error");
-                                else 
-                                  print(usercred);
+                                else {
+                                 Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) => SignUp_C(uid:usercred.toString())));}
+                                  
                               },
                               padding: const EdgeInsets.all(0.0),
                               color: Colors.white,

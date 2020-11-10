@@ -63,7 +63,7 @@ class AuthService {
       final User user = usercredential.user;
       assert(!user.isAnonymous);
       assert(user.getIdToken() != null);
-      return user;
+      return user.uid;
     } catch (e) {
       print(e.toString());
       return null;
