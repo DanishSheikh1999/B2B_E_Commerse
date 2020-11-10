@@ -119,7 +119,7 @@ class _SignUpState extends State<SignUp> {
                                   onChanged: (value) =>
                                       {setState(() => password = value)},
                                   decoration: InputDecoration(
-                                    
+                
                                     icon: Icon(Icons.lock,color: Colors.white,),
                                       hintText: "Password",
                                       hintStyle:
