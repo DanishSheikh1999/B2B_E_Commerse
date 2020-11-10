@@ -2,12 +2,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class RoundedButton extends StatelessWidget {
-  const RoundedButton({@required this.onPressed, this.text, this.gradient,this.color,this.width_ratio=1.7});
+  const RoundedButton({@required this.onPressed, this.text, this.gradient,this.color,this.width_ratio=1.7,this.padding  });
   final GestureTapCallback onPressed;
   final List<Color> gradient;
   final Text text;
   final Color color;
   final double width_ratio;
+  final EdgeInsets padding;
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
@@ -27,7 +28,7 @@ class RoundedButton extends StatelessWidget {
               end: Alignment.bottomRight):null
         ),
         child: text,
-        padding: EdgeInsets.only(top: 16, bottom: 16),
+        padding: padding==null?EdgeInsets.only(top: 16, bottom: 16):padding,
       ),
     );
   }

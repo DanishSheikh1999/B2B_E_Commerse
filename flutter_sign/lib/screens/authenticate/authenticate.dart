@@ -25,9 +25,10 @@ class _AuthenticateState extends State<Authenticate> {
               gradient: LinearGradient(
             begin: Alignment.topCenter,
             colors: <Color>[
-              Colors.orange[900],
-              Colors.orange[800],
-              Colors.orange[600],
+              Colors.orange[500],
+                  Colors.orange[600],
+                  Colors.orange[600],
+                  Colors.orange[700],
             ],
           )),
           child: Column(

@@ -27,14 +27,15 @@ class _SignUpState extends State<SignUp> {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 colors: <Color>[
-                  Colors.orange[900],
-                  Colors.orange[800],
-                  Colors.orange[500],
+                    Colors.orange[500],
+                  Colors.orange[600],
+                  Colors.orange[600],
+                  Colors.orange[700],
                 ],
               ),
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
                   height: 80,
@@ -62,49 +63,55 @@ class _SignUpState extends State<SignUp> {
                   height: 20,
                 ),
                 Expanded(
-                  child: Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.all(30),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(60),
-                            topRight: Radius.circular(60))),
+                                  child: Container(
+                    padding: EdgeInsets.only(top:20,left:40,right: 40),
+                   
                     child: SingleChildScrollView(
                       child: Form(
                         key: _formkey,
                         child: Column(
                           children: [
-                            SizedBox(
-                              height: 30,
-                            ),
+                    
                             SizedBox(
                               height: 20,
                             ),
                             RoundedFormField(
+                              text: Text("Email",style: TextStyle(color: Colors.white,
+                              fontSize: 15),),
+                              backgroundColor: Colors.orange[400],
                               textFormField: TextFormField(
+                                cursorColor: Colors.white,
+                                style: TextStyle(color: Colors.white),
+                                keyboardType: TextInputType.emailAddress,
                                   validator: (value) =>
                                       email.isEmpty ? "Enter an email" : null,
                                   onChanged: (value) =>
                                       {setState(() => email = value)},
                                   decoration: InputDecoration(
+                                    
+                                    icon: Icon(Icons.email,color: Colors.white,),
                                       hintText: "Email",
                                       hintStyle:
-                                          TextStyle(color: Colors.grey[400]),
+                                          TextStyle(color: Colors.white),
                                       border: InputBorder.none)),
-                              edgeInsets: EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 20),
-                              borderRadius: 30,
-                              boxShadow: BoxShadow(
-                                  color: Color.fromRGBO(225, 95, 27, .3),
-                                  blurRadius: 20,
-                                  offset: Offset(0, 10)),
+                               edgeInsets: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 10),
+                            borderRadius: 10,
+                            boxShadow: BoxShadow(
+                                color: Colors.orange[700],
+                                blurRadius: 3,
+                                spreadRadius: 3
+                                ),
                             ),
                             SizedBox(
                               height: 20,
                             ),
                             RoundedFormField(
                               textFormField: TextFormField(
+                                cursorColor: Colors.white,
+                                
+                                style: TextStyle(color: Colors.white),
+                                keyboardType: TextInputType.visiblePassword,
                                 obscureText: true,
                                   validator: (value) => password.length < 6
                                       ? "Enter a password of length > 6"
@@ -112,17 +119,21 @@ class _SignUpState extends State<SignUp> {
                                   onChanged: (value) =>
                                       {setState(() => password = value)},
                                   decoration: InputDecoration(
+                                    
+                                    icon: Icon(Icons.lock,color: Colors.white,),
                                       hintText: "Password",
                                       hintStyle:
-                                          TextStyle(color: Colors.grey[400]),
+                                          TextStyle(color: Colors.white),
                                       border: InputBorder.none)),
-                              edgeInsets: EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 20),
-                              borderRadius: 30,
-                              boxShadow: BoxShadow(
-                                  color: Color.fromRGBO(225, 95, 27, .3),
-                                  blurRadius: 20,
-                                  offset: Offset(0, 10)),
+                               edgeInsets: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 10),
+                            borderRadius: 10,
+                            boxShadow: BoxShadow(
+                                color: Colors.orange[700],
+                                blurRadius: 3,
+                                spreadRadius: 3
+                                ),
+                                backgroundColor: Colors.orange[400],
                             ),
                             SizedBox(height :20,
 
@@ -130,26 +141,31 @@ class _SignUpState extends State<SignUp> {
 
                              RoundedFormField(
                               textFormField: TextFormField(
+                                style: TextStyle(color: Colors.white),
+                                cursorColor: Colors.white,
                                   validator: (value) => (confirm_password!="" && confirm_password!=password && confirm_password.length<6)
                                       ? "Please check the password"
                                       : null,
                                   onChanged: (value) =>
                                       {setState(() => password = value)},
                                   decoration: InputDecoration(
+                                    icon: Icon(Icons.lock_outline,color: Colors.white,),
                                       hintText: "Confirm Password",
                                       hintStyle:
-                                          TextStyle(color: Colors.grey[400]),
+                                          TextStyle(color: Colors.white),
                                       border: InputBorder.none)),
-                              edgeInsets: EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 20),
-                              borderRadius: 30,
-                              boxShadow: BoxShadow(
-                                  color: Color.fromRGBO(225, 95, 27, .3),
-                                  blurRadius: 20,
-                                  offset: Offset(0, 10)),
+                                 edgeInsets: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 10),
+                            borderRadius: 10,
+                            boxShadow: BoxShadow(
+                                color: Colors.orange[700],
+                                blurRadius: 3,
+                                spreadRadius: 3
+                                ),
+                                backgroundColor: Colors.orange[400],
                             ),
                             SizedBox(
-                              height: 30,
+                              height: 50,
                             ),
                             RoundedButton(
                               onPressed: () async {
@@ -165,20 +181,22 @@ class _SignUpState extends State<SignUp> {
                                           MaterialPageRoute(builder: (context) => SignUp_C(uid:result.toString())));}
                                 }
                               },
+                              width_ratio: 1.2,
+                              padding: EdgeInsets.symmetric(vertical:12),
                               text: Text("Continue",
                               style:TextStyle(
-                                color: Colors.white,
-                                fontSize: 15
+                                color: Colors.orange[600],
+                                fontSize: 20
                               ),),
-                              gradient: signUpGradients,
+                              color: Colors.white,
                             ),
                             SizedBox(
                               height: 20,
                             ),
                             Text(
-                              "or",
+                              "-or-",
                               style:
-                                  TextStyle(color: Colors.grey, fontSize: 20),
+                                  TextStyle(color: Colors.white, fontSize: 20),
                             ),
                             SizedBox(
                               height: 20,
@@ -193,26 +211,14 @@ class _SignUpState extends State<SignUp> {
                               },
                               padding: const EdgeInsets.all(0.0),
                               color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30.0)),
+                              shape: CircleBorder(),
                               child: Container(
                                 alignment: Alignment.center,
-                                width: MediaQuery.of(context).size.width / 1.7,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Image(
-                                      image:
-                                          AssetImage("assets/Google_logo.png"),
-                                      width: 20,
-                                    ),
-                                    Text("Continue with Google",
-                                        style: TextStyle(
-                                            color: Colors.grey[400],
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w500)),
-                                  ],
+                                width: 30,
+                                child: Image(
+                                  image:
+                                      AssetImage("assets/Google_logo.png"),
+                                  width: 30,
                                 ),
                                 padding: EdgeInsets.only(top: 16, bottom: 16),
                               ),

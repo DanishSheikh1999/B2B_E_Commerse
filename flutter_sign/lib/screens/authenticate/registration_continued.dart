@@ -59,9 +59,10 @@ class _SignUpState extends State<SignUp_C> {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 colors: <Color>[
-                  Colors.orange[900],
-                  Colors.orange[800],
                   Colors.orange[500],
+                  Colors.orange[600],
+                  Colors.orange[600],
+                  Colors.orange[700],
                 ],
               ),
             ),
@@ -72,7 +73,7 @@ class _SignUpState extends State<SignUp_C> {
                   height: 50,
                 ),
                 Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.only(top:10),
                   child: Center(
                     child: Container(
       width: 120,
@@ -93,28 +94,24 @@ class _SignUpState extends State<SignUp_C> {
 )),
                   )
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+               
                 Expanded(
                   child: Container(
                     width: double.infinity,
-                    padding: EdgeInsets.all(30),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(60),
-                            topRight: Radius.circular(60))),
+                    padding: EdgeInsets.symmetric(horizontal:40),
                     child: SingleChildScrollView(
                       child: Form(
                         key: _formkey,
                         child: Column(
                           children: [
                             SizedBox(
-                              height: 30,
+                              height: 20,
                             ),
                             RoundedFormField(
                               textFormField: TextFormField(
+                                cursorColor: Colors.white,
+                                style: TextStyle(color: Colors.white),
+                                keyboardType: TextInputType.name,
                                   validator: (value) =>
                                       name.isEmpty ? "Enter Name" : null,
                                   onChanged: (value) =>
@@ -122,21 +119,27 @@ class _SignUpState extends State<SignUp_C> {
                                   decoration: InputDecoration(
                                       hintText: "Name",
                                       hintStyle:
-                                          TextStyle(color: Colors.grey[400]),
+                                          TextStyle(color: Colors.white),
                                       border: InputBorder.none)),
+                              backgroundColor: Colors.orange[400],
                               edgeInsets: EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 20),
-                              borderRadius: 30,
-                              boxShadow: BoxShadow(
-                                  color: Color.fromRGBO(225, 95, 27, .3),
-                                  blurRadius: 10,
-                                  offset: Offset(0, 10)),
+                                vertical: 5, horizontal: 10),
+                            borderRadius: 10,
+                            boxShadow: BoxShadow(
+                                color: Colors.orange[700],
+                                blurRadius: 3,
+                                spreadRadius: 3
+                                ),
                             ),
                             SizedBox(
-                              height: 20,
+                              height: 10,
                             ),
                             RoundedFormField(
+                             
                               textFormField: TextFormField(
+                                cursorColor: Colors.white,
+                                style: TextStyle(color: Colors.white),
+                                keyboardType: TextInputType.phone,
                                   validator: (value) => phone_number.length !=lengths["phone"]
                                       ? "Enter a valid phone number"
                                       : null,
@@ -145,20 +148,25 @@ class _SignUpState extends State<SignUp_C> {
                                   decoration: InputDecoration(
                                       hintText: "Phone number",
                                       hintStyle:
-                                          TextStyle(color: Colors.grey[400]),
+                                          TextStyle(color: Colors.white),
                                       border: InputBorder.none)),
+                              backgroundColor: Colors.orange[400],
                               edgeInsets: EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 20),
-                              borderRadius: 30,
-                              boxShadow: BoxShadow(
-                                  color: Color.fromRGBO(225, 95, 27, .3),
-                                  blurRadius: 10,
-                                  offset: Offset(0, 10)),
+                                vertical: 5, horizontal: 10),
+                            borderRadius: 10,
+                            boxShadow: BoxShadow(
+                                color: Colors.orange[700],
+                                blurRadius: 3,
+                                spreadRadius: 3
+                                ),
                             ),
                             SizedBox(
-                              height: 20,
+                              height: 10,
                             ),RoundedFormField(
                               textFormField: TextFormField(
+                                cursorColor: Colors.white,
+                                style: TextStyle(color: Colors.white),
+                                keyboardType: TextInputType.text,
                                   validator: (value) => gst.length !=lengths["gst"]
                                       ? "Enter a gst number"
                                       : null,
@@ -167,20 +175,25 @@ class _SignUpState extends State<SignUp_C> {
                                   decoration: InputDecoration(
                                       hintText: "GST Number",
                                       hintStyle:
-                                          TextStyle(color: Colors.grey[400]),
+                                          TextStyle(color: Colors.white),
                                       border: InputBorder.none)),
+                             backgroundColor: Colors.orange[400],
                               edgeInsets: EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 20),
-                              borderRadius: 30,
-                              boxShadow: BoxShadow(
-                                  color: Color.fromRGBO(225, 95, 27, .3),
-                                  blurRadius: 10,
-                                  offset: Offset(0, 10)),
+                                vertical: 5, horizontal: 10),
+                            borderRadius: 10,
+                            boxShadow: BoxShadow(
+                                color: Colors.orange[700],
+                                blurRadius: 3,
+                                spreadRadius: 3
+                                ),
                             ),
                             SizedBox(
-                              height: 20,
+                              height: 10,
                             ),RoundedFormField(
                               textFormField: TextFormField(
+                                cursorColor: Colors.white,
+                                style: TextStyle(color: Colors.white),
+                                keyboardType: TextInputType.text,
                                   validator: (value) => pan.length !=lengths["pan"]
                                       ? "Enter a valid pan number"
                                       : null,
@@ -189,23 +202,27 @@ class _SignUpState extends State<SignUp_C> {
                                   decoration: InputDecoration(
                                       hintText: "PAN Number",
                                       hintStyle:
-                                          TextStyle(color: Colors.grey[400]),
+                                          TextStyle(color: Colors.white),
                                       border: InputBorder.none)),
+                              backgroundColor: Colors.orange[400],
                               edgeInsets: EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 20),
-                              borderRadius: 30,
-                              boxShadow: BoxShadow(
-                                  color: Color.fromRGBO(225, 95, 27, .3),
-                                  blurRadius: 10,
-                                  offset: Offset(0, 10)),
+                                vertical: 5, horizontal: 10),
+                            borderRadius: 10,
+                            boxShadow: BoxShadow(
+                                color: Colors.orange[700],
+                                blurRadius: 3,
+                                spreadRadius: 3
+                                ),
                             ),
                             SizedBox(
-                              height: 20,
+                              height: 10,
                             ),
                             RoundedFormField(
                               textFormField: TextFormField(
+                                cursorColor: Colors.white,
+                                style: TextStyle(color: Colors.white),
                                 keyboardType: TextInputType.multiline,
-                                maxLines: 3,
+                                maxLines: 2,
                                   validator: (value) => address_line.isEmpty
                                       ? "Enter Address"
                                       : null,
@@ -214,20 +231,25 @@ class _SignUpState extends State<SignUp_C> {
                                   decoration: InputDecoration(
                                       hintText: "Address",
                                       hintStyle:
-                                          TextStyle(color: Colors.grey[400]),
+                                          TextStyle(color: Colors.white),
                                       border: InputBorder.none)),
+                              backgroundColor: Colors.orange[400],
                               edgeInsets: EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 20),
-                              borderRadius: 30,
-                              boxShadow: BoxShadow(
-                                  color: Color.fromRGBO(225, 95, 27, .3),
-                                  blurRadius: 10,
-                                  offset: Offset(0, 10)),
+                                vertical: 5, horizontal: 10),
+                            borderRadius: 10,
+                            boxShadow: BoxShadow(
+                                color: Colors.orange[800],
+                                blurRadius: 3,
+                                spreadRadius: 3
+                                ),
                             ),
                             SizedBox(
                               height: 20,
                             ),RoundedFormField(
                               textFormField: TextFormField(
+                                cursorColor: Colors.white,
+                                style: TextStyle(color: Colors.white),
+                                keyboardType: TextInputType.phone,
                                   validator: (value) => pincode.length!=lengths["pincode"]
                                       ? "Enter a valid pincode"
                                       : null,
@@ -236,15 +258,17 @@ class _SignUpState extends State<SignUp_C> {
                                   decoration: InputDecoration(
                                       hintText: "Pincode",
                                       hintStyle:
-                                          TextStyle(color: Colors.grey[400]),
+                                          TextStyle(color: Colors.white),
                                       border: InputBorder.none)),
+                              backgroundColor: Colors.orange[400],
                               edgeInsets: EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 20),
-                              borderRadius: 30,
-                              boxShadow: BoxShadow(
-                                  color: Color.fromRGBO(225, 95, 27, .3),
-                                  blurRadius: 10,
-                                  offset: Offset(0, 10)),
+                                vertical: 5, horizontal: 10),
+                            borderRadius: 10,
+                            boxShadow: BoxShadow(
+                                color: Colors.orange[800],
+                                blurRadius: 3,
+                                spreadRadius: 3
+                                ),
                             ),
                             SizedBox(
                               height: 30,
@@ -261,11 +285,12 @@ class _SignUpState extends State<SignUp_C> {
                                   MaterialPageRoute(builder: (context)=>Home()));
                                 }
                               },
+                              padding: EdgeInsets.symmetric(vertical:12),
                               text: Text("Register",
                               style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15                              ),),
-                              gradient: signUpGradients,
+                                color: Colors.orange[600],
+                                fontSize: 20                              ),),
+                              color: Colors.white,
                             ),
                             SizedBox(
                               height: 20,

@@ -57,147 +57,154 @@ class _SignInAnonState extends State<SignInAnon> {
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                  padding: EdgeInsets.all(40),
-                  child: SingleChildScrollView(
-                    child: Form(
-                      key: _formkey,
-                      child: Column(
+                Expanded(
+                     child: Container(
+                    padding: EdgeInsets.all(40),
+                    child: SingleChildScrollView(
+                      child: Form(
+                        key: _formkey,
+                        child: Column(
 
-                        children: [
-                        SizedBox(
-                          height: 50,
-                        ),
-                        RoundedFormField(
-                          text: Text("Email",
-                          
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15
-                          ),),
-                         backgroundColor: Colors.orange[600],
-                          textFormField: TextFormField(
-                              validator: (value) =>
-                                  email.isEmpty ? "Enter an email" : null,
-                              onChanged: (value) =>
-                                  {setState(() => email = value)},
-                              decoration: InputDecoration(
-                                icon: Icon(Icons.email,
-                                color: Colors.white,),
-                                  hintText: "Email",
-                                  hintStyle:
-                                      TextStyle(color: Colors.grey[300]),
-                                  border: InputBorder.none)),
-                          edgeInsets: EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 10),
-                          borderRadius: 10,
-                          boxShadow: BoxShadow(
-                              color: Colors.orange[700],
-                              blurRadius: 2,
-                              spreadRadius: 2
-                              ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        RoundedFormField(
-                          text: Text("Password",style: TextStyle(color: Colors.white,fontSize: 15),),
-                          backgroundColor: Colors.orange[600],
-                          textFormField: TextFormField(
-                              obscureText: true,
-                              validator: (value) => password.length <= 6
-                                  ? "Enter a password of length>6"
-                                  : null,
-                              onChanged: (value) =>
-                                  {setState(() => password = value)},
-                              decoration: InputDecoration(
-                                icon: Icon(Icons.lock,
-                                color: Colors.white,),
-                                  hintText: "Password",
-                                  hintStyle:
-                                      TextStyle(color: Colors.grey[400]),
-                                  border: InputBorder.none)),
-                          edgeInsets: EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 20),
-                          borderRadius: 10,
-                          boxShadow: BoxShadow(
-                              color: Colors.orange[700],
-                              blurRadius: 2,
-                              spreadRadius: 2,)
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: Text(    
-                            "Forgot Password?",
-                            style: TextStyle(color: Colors.white),
-                          
+                          children: [
+                          SizedBox(
+                            height: 50,
                           ),
-                        ),
-                        SizedBox(
-                          height: 40,
-                        ),
-                        RoundedButton(
-                          color: Colors.white,
-                          onPressed: () async {
-                            dynamic result = await _auth.signInemail(email, password);
-                            print(result.toString());
-                            if(result==null)
-                              print("Error");
-                            else
-                              Navigator.pushAndRemoveUntil(
-                                                 context,
-                                                MaterialPageRoute(builder: (context) => Home()),
-                                                (Route<dynamic> route) => false,
-                                              );
-                          },
-                          width_ratio: 1.2,
-                          text: Text(
-                            "Login",
-                            style: TextStyle(
-                              color: Colors.orange[600],
-                              fontSize: 15
-                            ),
-                          )
-                          
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          "-or-",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                      
-                        RaisedButton(
+                          RoundedFormField(
+                            text: Text("Email",
                             
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15
+                            ),),
+                           backgroundColor: Colors.orange[400],
+                            textFormField: TextFormField(
+                                 cursorColor: Colors.white,
+                                style: TextStyle(color: Colors.white),
+                                validator: (value) =>
+                                    email.isEmpty ? "Enter an email" : null,
+                                onChanged: (value) =>
+                                    {setState(() => email = value)},
+                                decoration: InputDecoration(
+                                  icon: Icon(Icons.email,
+                                  color: Colors.white,),
+                                    hintText: "Enter your Email",
+                                    hintStyle:
+                                        TextStyle(color: Colors.white),
+                                    border: InputBorder.none)),
+                            edgeInsets: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 10),
+                            borderRadius: 10,
+                            boxShadow: BoxShadow(
+                                color: Colors.orange[700],
+                                blurRadius: 3,
+                                spreadRadius: 3
+                                ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          RoundedFormField(
+                            text: Text("Password",style: TextStyle(color: Colors.white,fontSize: 15),),
+                            backgroundColor: Colors.orange[400],
+                            textFormField: TextFormField(
+                                 cursorColor: Colors.white,
+                                style: TextStyle(color: Colors.white),
+                                obscureText: true,
+                                validator: (value) => password.isEmpty
+                                    ? "Enter a password"
+                                    : null,
+                                onChanged: (value) =>
+                                    {setState(() => password = value)},
+                                decoration: InputDecoration(
+                                  icon: Icon(Icons.lock,
+                                  color: Colors.white,),
+                                    hintText: "Enter your Password",
+                                    hintStyle:
+                                        TextStyle(color: Colors.white),
+                                    border: InputBorder.none)),
+                            edgeInsets: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 10),
+                            borderRadius: 10,
+                            boxShadow: BoxShadow(
+                                color: Colors.orange[700],
+                                blurRadius: 3,
+                                spreadRadius: 3,)
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(    
+                              "Forgot Password?",
+                              style: TextStyle(color: Colors.white),
+                            
+                            ),
+                          ),
+                          SizedBox(
+                            height: 40,
+                          ),
+                          RoundedButton(
+                            color: Colors.white,
                             onPressed: () async {
-                              dynamic result = await _auth.googleSignIn();
-                              if (result == null)
+                              dynamic result = await _auth.signInemail(email, password);
+                              print(result.toString());
+                              if(result==null)
                                 print("Error");
                               else
-                                print(result);
+                                Navigator.pushAndRemoveUntil(
+                                                   context,
+                                                  MaterialPageRoute(builder: (context) => Home()),
+                                                  (Route<dynamic> route) => false,
+                                                );
                             },
-                            padding: const EdgeInsets.all(0.0),
-                            color: Colors.white,
-                            shape: CircleBorder(),
-                            child: Container(
-                              alignment: Alignment.center,
-                              width: 30,
-                              child: Image(
-                                image:
-                                    AssetImage("assets/Google_logo.png"),
-                                width: 30,
+                            width_ratio: 1.2,
+                            padding: EdgeInsets.symmetric(vertical :12),
+                            text: Text(
+                              "LOGIN",
+                              style: TextStyle(
+                                color: Colors.orange[600],
+                                fontSize: 20
                               ),
-                              padding: EdgeInsets.only(top: 10, bottom: 10),
-                            )),
-                      ]),
+                            )
+                            
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            "-or-",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                        
+                          RaisedButton(
+                              
+                              onPressed: () async {
+                                dynamic result = await _auth.googleSignIn();
+                                if (result == null)
+                                  print("Error");
+                                else
+                                  print(result);
+                              },
+                              padding: const EdgeInsets.all(0.0),
+                              color: Colors.white,
+                              shape: CircleBorder(),
+                              child: Container(
+                                alignment: Alignment.center,
+                                width: 30,
+                                child: Image(
+                                  image:
+                                      AssetImage("assets/Google_logo.png"),
+                                  width: 30,
+                                ),
+                                padding: EdgeInsets.only(top: 10, bottom: 10),
+                              )),
+                        ]),
+                      ),
                     ),
                   ),
                 )
