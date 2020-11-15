@@ -34,14 +34,14 @@ class _HomeState extends State<Home> {
      ),      
       title: Text(
         "Home",
-        style: TextStyle(color: Colors.amberAccent[200]),
+        style: TextStyle(color: Colors.white),
       ),
       actions: [
         IconButton(icon: Icon(Icons.search), onPressed: (){
           showSearch(context: context, delegate: Search(hintText:"What are you looking for?"));
         }),
-        IconButton(icon: Icon(Icons.notifications), onPressed: null),
-        IconButton(icon: Icon(Icons.shopping_cart), onPressed: null)
+        IconButton(icon: Icon(Icons.notifications,color: Colors.white,), onPressed: null),
+        IconButton(icon: Icon(Icons.shopping_cart,color: Colors.white,), onPressed: null)
 
       ],
     ),
