@@ -1,4 +1,5 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sign/Custom_builds/custom_form_fields.dart';
 import 'package:flutter_sign/custom_classes/credentials.dart';
@@ -276,8 +277,12 @@ class _SignUpState extends State<SignUp_C> {
                               height: 30,
                             ),RoundedButton(
                               onPressed: () async {
+                                FirebaseAuth.instance.currentUser.reload();
+                              User user =FirebaseAuth.instance.currentUser;
+                              print(user.emailVerified);
+                              if( user.emailVerified){  
                                 if (_formkey.currentState.validate() && _image!=null) {
-                                  uploadImage();
+                                  await uploadImage();
                                   await DatabaseService(uid:widget.uid).updateUsers(Credentials(
                                     name: name,phone: phone_number,pan: pan,gst: gst,pincode: pincode,
                                     address: address_line,picUrl: picUrl
@@ -287,6 +292,11 @@ class _SignUpState extends State<SignUp_C> {
                                   Navigator.pushReplacement(context, 
                                   MaterialPageRoute(builder: (context)=>Home()));
                                 }
+                              }
+                              else 
+                                print("Please verify the email");
+
+                                
                               },
                               padding: EdgeInsets.symmetric(vertical:12),
                               text: Text("Register",

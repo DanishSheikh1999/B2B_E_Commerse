@@ -38,8 +38,16 @@ class AuthService {
     try {
       UserCredential userCredential = await _auth
           .createUserWithEmailAndPassword(email: email, password: password);
+     
+      await userCredential.user.sendEmailVerification();
       return userCredential.user.uid;
-    } catch (e) {
+    } on FirebaseAuthException catch (e) {
+  if (e.code == 'weak-password') {
+    print('The password provided is too weak.');
+  } else if (e.code == 'email-already-in-use') {
+    print('The account already exists for that email.');
+  }
+} catch (e) {
       print(e.toString());
       return null;
     }

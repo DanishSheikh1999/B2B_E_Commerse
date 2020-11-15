@@ -36,6 +36,9 @@ dependencies:
   google_sign_in:
   image_picker: ^0.6.7+12
   shared_preferences:
+  connectivity: 
+  flutter_spinkit: "^4.1.2"
+  flutter_offline: "^0.3.0"
 
 dev_dependencies:
   flutter_test:
