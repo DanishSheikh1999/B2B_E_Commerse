@@ -28,10 +28,7 @@ class _SignUpState extends State<SignUp_C> {
   String pincode="",picUrl="";
   String error = "";
   File _image=null;
-  Map<String,int> lengths =    {"phone":1,
-                                          "gst":1,
-                                          "pan":1,
-                                          "pincode":1};
+  Map<String,int> lengths =    {"phone":1,"pincode":1};
 
   final picker = ImagePicker();
 
@@ -164,59 +161,59 @@ class _SignUpState extends State<SignUp_C> {
                                 ),
                             ),
                             SizedBox(
-                              height: 10,
-                            ),RoundedFormField(
-                              textFormField: TextFormField(
-                                cursorColor: Colors.white,
-                                style: TextStyle(color: Colors.white),
-                                keyboardType: TextInputType.text,
-                                  validator: (value) => gst.length !=lengths["gst"]
-                                      ? "Enter a gst number"
-                                      : null,
-                                  onChanged: (value) =>
-                                      {setState(() => gst= value)},
-                                  decoration: InputDecoration(
-                                      hintText: "GST Number",
-                                      hintStyle:
-                                          TextStyle(color: Colors.white),
-                                      border: InputBorder.none)),
-                             backgroundColor: Colors.orange[400],
-                              edgeInsets: EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 10),
-                            borderRadius: 10,
-                            boxShadow: BoxShadow(
-                                color: Colors.orange[700],
-                                blurRadius: 3,
-                                spreadRadius: 3
-                                ),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),RoundedFormField(
-                              textFormField: TextFormField(
-                                cursorColor: Colors.white,
-                                style: TextStyle(color: Colors.white),
-                                keyboardType: TextInputType.text,
-                                  validator: (value) => pan.length !=lengths["pan"]
-                                      ? "Enter a valid pan number"
-                                      : null,
-                                  onChanged: (value) =>
-                                      {setState(() => pan= value)},
-                                  decoration: InputDecoration(
-                                      hintText: "PAN Number",
-                                      hintStyle:
-                                          TextStyle(color: Colors.white),
-                                      border: InputBorder.none)),
-                              backgroundColor: Colors.orange[400],
-                              edgeInsets: EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 10),
-                            borderRadius: 10,
-                            boxShadow: BoxShadow(
-                                color: Colors.orange[700],
-                                blurRadius: 3,
-                                spreadRadius: 3
-                                ),
-                            ),
+                              height: 10,),
+                            // ),RoundedFormField(
+                            //   textFormField: TextFormField(
+                            //     cursorColor: Colors.white,
+                            //     style: TextStyle(color: Colors.white),
+                            //     keyboardType: TextInputType.text,
+                            //       validator: (value) => gst.length !=lengths["gst"]
+                            //           ? "Enter a gst number"
+                            //           : null,
+                            //       onChanged: (value) =>
+                            //           {setState(() => gst= value)},
+                            //       decoration: InputDecoration(
+                            //           hintText: "GST Number",
+                            //           hintStyle:
+                            //               TextStyle(color: Colors.white),
+                            //           border: InputBorder.none)),
+                            //  backgroundColor: Colors.orange[400],
+                            //   edgeInsets: EdgeInsets.symmetric(
+                            //     vertical: 5, horizontal: 10),
+                            // borderRadius: 10,
+                            // boxShadow: BoxShadow(
+                            //     color: Colors.orange[700],
+                            //     blurRadius: 3,
+                            //     spreadRadius: 3
+                            //     ),
+                            // ),
+                            // SizedBox(
+                            //   height: 10,
+                            // ),RoundedFormField(
+                            //   textFormField: TextFormField(
+                            //     cursorColor: Colors.white,
+                            //     style: TextStyle(color: Colors.white),
+                            //     keyboardType: TextInputType.text,
+                            //       validator: (value) => pan.length !=lengths["pan"]
+                            //           ? "Enter a valid pan number"
+                            //           : null,
+                            //       onChanged: (value) =>
+                            //           {setState(() => pan= value)},
+                            //       decoration: InputDecoration(
+                            //           hintText: "PAN Number",
+                            //           hintStyle:
+                            //               TextStyle(color: Colors.white),
+                            //           border: InputBorder.none)),
+                            //   backgroundColor: Colors.orange[400],
+                            //   edgeInsets: EdgeInsets.symmetric(
+                            //     vertical: 5, horizontal: 10),
+                            // borderRadius: 10,
+                            // boxShadow: BoxShadow(
+                            //     color: Colors.orange[700],
+                            //     blurRadius: 3,
+                            //     spreadRadius: 3
+                            //     ),
+                            // ),
                             SizedBox(
                               height: 10,
                             ),
@@ -284,7 +281,7 @@ class _SignUpState extends State<SignUp_C> {
                                 if (_formkey.currentState.validate() && _image!=null) {
                                   await uploadImage();
                                   await DatabaseService(uid:widget.uid).updateUsers(Credentials(
-                                    name: name,phone: phone_number,pan: pan,gst: gst,pincode: pincode,
+                                    name: name,phone: phone_number,pincode: pincode,
                                     address: address_line,picUrl: picUrl
                                   ));
                                   SharedPreferences pref = await SharedPreferences.getInstance();

@@ -6,11 +6,21 @@ class Credentials{
   Credentials({
     this.name,
     this.address,
-    this.gst,
     this.pincode,
-    this.pan,
     this.phone,
     this.picUrl
   
   });
+}
+
+class information {
+  String uid,category;
+  List<String> userTypes;
+  information({
+    this.uid,category,
+    this.userTypes,
+  });
+
+  
+
 }

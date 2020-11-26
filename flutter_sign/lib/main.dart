@@ -3,6 +3,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_sign/screens/authenticate/category_selection.dart';
+import 'package:flutter_sign/screens/authenticate/customer_type.dart';
+import 'package:flutter_sign/screens/authenticate/register.dart';
+import 'package:flutter_sign/screens/authenticate/registration_continued.dart';
 import 'package:flutter_sign/screens/internet_Checker.dart';
 import 'package:flutter_sign/screens/wrapper.dart';
 import 'package:flutter_sign/services/firebase_auth.dart';
@@ -67,7 +71,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return StreamProvider<User>.value(
         value: AuthService().user,
-        child: MaterialApp(home: Wrapper()
+        child: MaterialApp(home:SignUp_C()
        
             ));
   }

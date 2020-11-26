@@ -12,8 +12,6 @@ class DatabaseService{
     return await users.doc(uid).set({
       "Name":cred.name,
       "Phone_Number":cred.phone,
-      "GST": cred.gst,
-      "PAN": cred.pan,
       "Address":cred.address,
       "Pincode":cred.pincode,
       "PicUrl":cred.picUrl
