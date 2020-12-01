@@ -1,26 +1,24 @@
 
-class Credentials{
-  String name,phone,gst,pan,address,pincode,picUrl;
+class Credentials {
+  String uid,name,phone,address,pincode,picUrl,category;
+  List<String> userType;
 
  // File image;
   Credentials({
-    this.name,
-    this.address,
-    this.pincode,
-    this.phone,
-    this.picUrl
-  
+    this.name,phone,uid,address,pincode,picUrl,category,
+    this.userType
   });
+
+  void setuserType(List<String> value) => this.userType = value;
+  void setcategory(String value) => this.category = value;
+  void setUid(String value) => this.uid = value;
+  String getUid() {return this.uid;}
+  
+  
+  
 }
 
-class information {
-  String uid,category;
-  List<String> userTypes;
-  information({
-    this.uid,category,
-    this.userTypes,
-  });
 
   
 
-}
+

@@ -2,8 +2,12 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_sign/Custom_builds/rounded_button_with_gradient.dart';
+import 'package:flutter_sign/custom_classes/credentials.dart';
 
 class User_type extends StatefulWidget {
+  final Credentials cred;
+
+  const User_type({Key key, this.cred}) : super(key: key);
   @override
   _User_typeState createState() => _User_typeState();
 }
@@ -128,7 +132,8 @@ class _User_typeState extends State<User_type> {
             ),
             RoundedButton(
                               onPressed: ()  {
-                                print(result);
+                                widget.cred.setuserType(result);
+                                print(widget.cred.toString());
                               },
                               width_ratio: 1.2,
                               padding: EdgeInsets.symmetric(vertical:12),

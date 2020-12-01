@@ -83,10 +83,11 @@ class AuthService {
   //SignOut
   Future signOut() async {
     try {
-      return await _auth.signOut();
+      await _auth.signOut();
+      return true;
     } catch (e) {
       print("Error " + e.toString());
-      return "Error";
+      return false;
     }
   }
 }

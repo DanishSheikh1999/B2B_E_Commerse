@@ -57,7 +57,11 @@ class _HomeState extends State<Home> {
           ListTile(title:Text("Settings")),
            ListTile(title:Text("Invite to earn")),
             ListTile(title:Text("Customer Support")),
-             ListTile(title:Text("Logout")),
+             ListTile(title:Text("Logout"),
+             onTap: () async{
+               dynamic data=await _auth.signOut();
+               print(data);
+             },),
 
         ],)
     ),

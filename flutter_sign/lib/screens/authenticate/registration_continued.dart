@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sign/Custom_builds/custom_form_fields.dart';
 import 'package:flutter_sign/custom_classes/credentials.dart';
+import 'package:flutter_sign/screens/authenticate/customer_type.dart';
 import 'package:flutter_sign/screens/home/home.dart';
 import 'package:flutter_sign/services/database.dart';
 import 'package:image_picker/image_picker.dart';
@@ -24,7 +25,7 @@ class SignUp_C extends StatefulWidget {
 
 class _SignUpState extends State<SignUp_C> {
   final _formkey = GlobalKey<FormState>();
-  String name="",phone_number="",gst="",pan="",address_line="";
+  String name="",phone_number="",bname="",address_line="";
   String pincode="",picUrl="";
   String error = "";
   File _image=null;
@@ -50,9 +51,47 @@ class _SignUpState extends State<SignUp_C> {
    picUrl = (await ref.getDownloadURL()).toString();
    print("PicUrl - "+picUrl);
   }
+  Future<void> _showMyDialog() async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Skip to Home page'),
+        content: Text("You can complete the registration later"),
+        actions: <Widget>[
+          TextButton(
+            child: Text('Yes'),
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(context, 
+                                  MaterialPageRoute(builder: (context)=>Home()),
+                                  (Route<dynamic> route) => false);
+                       
+            },),
+          TextButton(
+            child: Text('No'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.orange[400],
+        actions: [
+          FlatButton(onPressed: (){
+           _showMyDialog();
+          },
+           child: Text("Skip",
+          style: TextStyle(color: Colors.white,
+          fontSize:24)))
+        ],),
         body: Container(
             width: double.infinity,
             decoration: BoxDecoration(
@@ -161,59 +200,33 @@ class _SignUpState extends State<SignUp_C> {
                                 ),
                             ),
                             SizedBox(
-                              height: 10,),
-                            // ),RoundedFormField(
-                            //   textFormField: TextFormField(
-                            //     cursorColor: Colors.white,
-                            //     style: TextStyle(color: Colors.white),
-                            //     keyboardType: TextInputType.text,
-                            //       validator: (value) => gst.length !=lengths["gst"]
-                            //           ? "Enter a gst number"
-                            //           : null,
-                            //       onChanged: (value) =>
-                            //           {setState(() => gst= value)},
-                            //       decoration: InputDecoration(
-                            //           hintText: "GST Number",
-                            //           hintStyle:
-                            //               TextStyle(color: Colors.white),
-                            //           border: InputBorder.none)),
-                            //  backgroundColor: Colors.orange[400],
-                            //   edgeInsets: EdgeInsets.symmetric(
-                            //     vertical: 5, horizontal: 10),
-                            // borderRadius: 10,
-                            // boxShadow: BoxShadow(
-                            //     color: Colors.orange[700],
-                            //     blurRadius: 3,
-                            //     spreadRadius: 3
-                            //     ),
-                            // ),
-                            // SizedBox(
-                            //   height: 10,
-                            // ),RoundedFormField(
-                            //   textFormField: TextFormField(
-                            //     cursorColor: Colors.white,
-                            //     style: TextStyle(color: Colors.white),
-                            //     keyboardType: TextInputType.text,
-                            //       validator: (value) => pan.length !=lengths["pan"]
-                            //           ? "Enter a valid pan number"
-                            //           : null,
-                            //       onChanged: (value) =>
-                            //           {setState(() => pan= value)},
-                            //       decoration: InputDecoration(
-                            //           hintText: "PAN Number",
-                            //           hintStyle:
-                            //               TextStyle(color: Colors.white),
-                            //           border: InputBorder.none)),
-                            //   backgroundColor: Colors.orange[400],
-                            //   edgeInsets: EdgeInsets.symmetric(
-                            //     vertical: 5, horizontal: 10),
-                            // borderRadius: 10,
-                            // boxShadow: BoxShadow(
-                            //     color: Colors.orange[700],
-                            //     blurRadius: 3,
-                            //     spreadRadius: 3
-                            //     ),
-                            // ),
+                              height: 10,
+                            ),RoundedFormField(
+                              textFormField: TextFormField(
+                                cursorColor: Colors.white,
+                                style: TextStyle(color: Colors.white),
+                                keyboardType: TextInputType.text,
+                                  validator: (value) => bname.isEmpty
+                                      ? "Enter Bussiness Name"
+                                      : null,
+                                  onChanged: (value) =>
+                                      {setState(() => bname= value)},
+                                  decoration: InputDecoration(
+                                      hintText: "Bussiness Name",
+                                      hintStyle:
+                                          TextStyle(color: Colors.white),
+                                      border: InputBorder.none)),
+                             backgroundColor: Colors.orange[400],
+                              edgeInsets: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 10),
+                            borderRadius: 10,
+                            boxShadow: BoxShadow(
+                                color: Colors.orange[700],
+                                blurRadius: 3,
+                                spreadRadius: 3
+                                ),
+                            ),
+                            
                             SizedBox(
                               height: 10,
                             ),
@@ -280,14 +293,15 @@ class _SignUpState extends State<SignUp_C> {
                               if( user.emailVerified){  
                                 if (_formkey.currentState.validate() && _image!=null) {
                                   await uploadImage();
-                                  await DatabaseService(uid:widget.uid).updateUsers(Credentials(
-                                    name: name,phone: phone_number,pincode: pincode,
-                                    address: address_line,picUrl: picUrl
-                                  ));
+
                                   SharedPreferences pref = await SharedPreferences.getInstance();
                                   pref.setBool("Registered", true);
-                                  Navigator.pushReplacement(context, 
-                                  MaterialPageRoute(builder: (context)=>Home()));
+                                  Navigator.push(context, 
+                                  MaterialPageRoute(builder: (context)=>User_type( cred:Credentials(
+                                    uid: widget.uid,
+                                    name: name,phone: phone_number,pincode: pincode,
+                                    address: address_line,picUrl: picUrl
+                                  ))));
                                 }
                               }
                               else 
@@ -321,3 +335,4 @@ const List<Color> signUpGradients = [
   Color(0xFFFF9945),
   Color(0xFFFc6076),
 ];
+
