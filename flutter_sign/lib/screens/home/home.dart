@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'dart:math';
+import 'dart:async';
 
 class Home extends StatefulWidget {
   @override
@@ -128,7 +129,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           ),
           Container(
             width: 400,
-           height: 430,
+           height: 460,
             child: WidgetFlipper(),
           )
         ]),
@@ -157,11 +158,35 @@ class _WidgetFlipperState extends State<WidgetFlipper>
   Animation<double> _frontRotation;
   Animation<double> _backRotation;
   bool isFrontVisible = true;
+  int _start = 240;
+  int minutes,seconds;
+  
+  Timer _timer;
+
+void startTimer() {
+  const oneSec = const Duration(seconds: 1);
+  _timer = new Timer.periodic(
+    oneSec,
+    (Timer timer) {
+      if (_start == 0) {
+        setState(() {
+          timer.cancel();
+        });
+      } else {
+        setState(() {
+          _start--;
+          minutes = (_start~/60) ;
+          seconds = _start- minutes*60;
+        });
+      }
+    },
+  );
+}
 
   @override
   void initState() {
     super.initState();
-
+    startTimer();
     controller =
         AnimationController(duration: Duration(milliseconds: 500), vsync: this);
     _frontRotation = TweenSequence(
@@ -197,6 +222,18 @@ class _WidgetFlipperState extends State<WidgetFlipper>
     controller.dispose();
     super.dispose();
   }
+   Future<void> _showMyDialog(String titleString , String contentString) async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: true, 
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(titleString),
+        content: Text(contentString),
+      );
+    },
+  );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -240,9 +277,10 @@ class _WidgetFlipperState extends State<WidgetFlipper>
                       ),
                     ),
                     Align(alignment: Alignment.topLeft, child: Container(
+                      width: 50,
                       padding: EdgeInsets.all(8),
                       color: Colors.red,
-                      child: Text("Timer"))),
+                      child: Text("$minutes:$seconds"))),
                     Align(
                       alignment: Alignment.topRight,
                       child: IconButton(
@@ -262,7 +300,11 @@ class _WidgetFlipperState extends State<WidgetFlipper>
                 children: [
   
                 Text("Unit Amount"),
-                Icon(Icons.info),
+                IconButton(icon: Icon(Icons.info),
+                onPressed: (){
+                    _showMyDialog("Info about Meter","Meter description etc");
+                },
+                ),
                 FlatButton(onPressed: _leftRotation, child: Text("Caculator")),
                 FlatButton(onPressed: null, child: Text("Share"))
 
@@ -274,7 +316,11 @@ class _WidgetFlipperState extends State<WidgetFlipper>
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children:[
                   Text("Cost(Save upto Rs._____"),
-                  Icon(Icons.info,)
+                  IconButton(icon: Icon(Icons.info,),
+                  onPressed: (){
+                    _showMyDialog("Use Calculator for final amount", "");
+                  },
+                  )
                 ]
               )
             ],

@@ -55,7 +55,6 @@ class _TabPageState extends State<TabPage> {
         // IconButton(icon: Icon(Icons.search), onPressed: (){
         //   showSearch(context: context, delegate: Search(hintText:"What are you looking for?"));
         // }),
-        IconButton(icon: Icon(Icons.notifications,color: Colors.white,), onPressed: null),
         IconButton(icon: Icon(Icons.shopping_cart,color: Colors.white,), onPressed: null)
 
       ],
@@ -84,7 +83,7 @@ class _TabPageState extends State<TabPage> {
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
         BottomNavigationBarItem(icon: Icon(Icons.search),label: "Search"),
-        BottomNavigationBarItem(icon: Icon(Icons.account_circle),label: "Profile")
+        BottomNavigationBarItem(icon: Icon(Icons.notifications),label: "Notification")
       ],
       currentIndex: selectedIndex,
         selectedItemColor: Colors.orange[400],
