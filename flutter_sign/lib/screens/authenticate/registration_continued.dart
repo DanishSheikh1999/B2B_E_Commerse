@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sign/Custom_builds/custom_form_fields.dart';
 import 'package:flutter_sign/custom_classes/credentials.dart';
 import 'package:flutter_sign/screens/authenticate/customer_type.dart';
-import 'package:flutter_sign/screens/home/home.dart';
+import 'package:flutter_sign/screens/home/tabPage.dart';
 import 'package:flutter_sign/services/database.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_sign/Custom_builds/rounded_button_with_gradient.dart';
@@ -64,7 +64,7 @@ class _SignUpState extends State<SignUp_C> {
             child: Text('Yes'),
             onPressed: () {
               Navigator.pushAndRemoveUntil(context, 
-                                  MaterialPageRoute(builder: (context)=>Home()),
+                                  MaterialPageRoute(builder: (context)=>TabPage()),
                                   (Route<dynamic> route) => false);
                        
             },),

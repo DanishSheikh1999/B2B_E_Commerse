@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "1018447602823",
-    "firebase_url": "https://uber-3a19d.firebaseio.com",
-    "project_id": "uber-3a19d",
-    "storage_bucket": "uber-3a19d.appspot.com"
+    "project_number": "365937538944",
+    "firebase_url": "https://projectx-alpha01.firebaseio.com",
+    "project_id": "projectx-alpha01",
+    "storage_bucket": "projectx-alpha01.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1018447602823:android:4c22e06d4a779ec0964422",
+        "mobilesdk_app_id": "1:365937538944:android:546988de649d217e6c3365",
         "android_client_info": {
           "package_name": "com.example.flutter_sign"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1018447602823-mk5rdqjpjcp7r4ua14ivvh98od6hjndu.apps.googleusercontent.com",
+          "client_id": "365937538944-4b4sgcq5o3ekgm725b5ilcghkvnmeiet.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.flutter_sign",
@@ -23,20 +23,20 @@
           }
         },
         {
-          "client_id": "1018447602823-39tiatgpug7ddaa49ocajtc010mkg9ra.apps.googleusercontent.com",
+          "client_id": "365937538944-g87psqngt0s7iolldshvhs2pj2okl32g.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCG5EsDs7-Xys8uyg5NDm7Eu4jTm4U7_LA"
+          "current_key": "AIzaSyCnGJL3OWWrAZxYxrYY10NBFDpnQ9lyuxM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1018447602823-39tiatgpug7ddaa49ocajtc010mkg9ra.apps.googleusercontent.com",
+              "client_id": "365937538944-g87psqngt0s7iolldshvhs2pj2okl32g.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -7,7 +7,7 @@ import 'package:flutter_sign/screens/authenticate/registration_continued.dart';
 import 'package:flutter_sign/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'home/home.dart';
+import 'home/tabPage.dart';
 
 class Wrapper extends StatelessWidget {
   
@@ -20,7 +20,7 @@ class Wrapper extends StatelessWidget {
     else {
       dynamic registered = check(user.uid);
       if(registered!=null)
-          return Home();
+          return TabPage();
       else
         return SignUp_C(uid:user.uid);
   }

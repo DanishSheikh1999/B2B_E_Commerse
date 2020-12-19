@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sign/Custom_builds/rounded_button_with_gradient.dart';
-import 'package:flutter_sign/screens/home/home.dart';
+import 'package:flutter_sign/screens/home/tabPage.dart';
 import 'package:flutter_sign/strategy/other_videos.dart';
 import 'package:video_player/video_player.dart';
 
@@ -39,7 +39,7 @@ class _Strategy_PageState extends State<Strategy_Page> {
             child: Text('Yes'),
             onPressed: () {
               Navigator.pushAndRemoveUntil(context, 
-                                  MaterialPageRoute(builder: (context)=>Home()),
+                                  MaterialPageRoute(builder: (context)=>TabPage()),
                                   (Route<dynamic> route) => false);
                        
             },),
