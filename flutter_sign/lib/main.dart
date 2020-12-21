@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_sign/screens/home/tabPage.dart';
+import 'package:flutter_sign/seller/sellerTab.dart';
 import 'package:flutter_sign/strategy/other_videos.dart';
 import 'package:flutter_sign/strategy/strategy.dart';
 import 'package:flutter_sign/services/firebase_auth.dart';
@@ -64,7 +65,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return StreamProvider<User>.value(
         value: AuthService().user,
-        child: MaterialApp(home:TabPage()
+        child: MaterialApp(home:SellerTab()
        
             ));
   }

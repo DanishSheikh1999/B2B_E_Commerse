@@ -167,12 +167,12 @@ void startTimer() {
                 children: [
   
                 Text("Unit Amount"),
-                IconButton(icon: Icon(Icons.info),
+                IconButton(icon: Icon(Icons.info,color: Colors.orange[400],),
                 onPressed: (){
                     _showMyDialog("Info about Meter","Meter description etc");
                 },
                 ),
-                FlatButton(onPressed: _leftRotation, child: Text("Caculator")),
+                FlatButton(onPressed: _leftRotation, child: Text("Calculator")),
                 FlatButton(onPressed: null, child: Text("Share"))
 
               ],),
@@ -183,7 +183,7 @@ void startTimer() {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children:[
                   Text("Cost(Save upto Rs._____"),
-                  IconButton(icon: Icon(Icons.info,),
+                  IconButton(icon: Icon(Icons.info,color: Colors.orange[400],),
                   onPressed: (){
                     _showMyDialog("Use Calculator for final amount", "");
                   },

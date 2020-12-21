@@ -41,6 +41,8 @@ dependencies:
   flutter_spinkit: "^4.1.2"
   flutter_offline: "^0.3.0"
   video_player:
+  qrscan: ^0.2.21
+  permission_handler: ^5.0.1+1
 dev_dependencies:
   flutter_test:
     sdk: flutter

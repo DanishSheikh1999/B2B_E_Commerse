@@ -73,84 +73,92 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-          child: Container(
-          padding: EdgeInsets.all(20),
-          child: Column(children: [
-      Text("Categories"),
-      Container(
-          height: 150,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            itemCount: 10,
-            separatorBuilder: (BuildContext context, int index) {
-              return SizedBox(width: 20);
-            },
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                child: Column(
-                  children: [
-                    Image(
-                      image: AssetImage("assets/" + images[index]),
-                      height: 100,
-                      width: 100,
-                    ),
-                    Text(names[index])
-                  ],
-                ),
-              );
-            },
-          )),
-      Divider(
-        height: 20,
-        thickness: 1.5,
-        color: Colors.orange[400],
+    return Container(
+    padding: EdgeInsets.all(20),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+      Align(
+        alignment: Alignment.center,
+              child: Text("Categories",style: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.bold
+        ),),
       ),
-      Text("Popular Items"),
       Container(
-          height: 150,
-          child: PageView.builder(
-              itemCount: names.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Image(
-                        image: AssetImage("assets/" + images[index]),
-                        height: 120,
-                        width: MediaQuery.of(context).size.width - 40,
-                      ),
-                      Text(names[index])
-                    ],
-                  ),
-                );
-              })),
-      Divider(
-        height: 20,
-        thickness: 1.5,
-        color: Colors.orange[400],
-      ),
-      ListView.separated(
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        itemCount: 10,
-        separatorBuilder: (BuildContext context,int index){
-          return SizedBox(
-            height:20
-          );
-        },
-        itemBuilder: (BuildContext context,int index){
+    height: 120,
+    child: ListView.separated(
+      scrollDirection: Axis.horizontal,
+      itemCount: 10,
+      separatorBuilder: (BuildContext context, int index) {
+        return SizedBox(width: 20);
+      },
+      itemBuilder: (BuildContext context, int index) {
         return Container(
-        width: 400,
-       height: 460,
-        child: WidgetFlipper(image:"assets/" + images[index],time:time[index]),
-      );
-      })
-      
-          ]),
-        ),
+          child: Column(
+            children: [
+              Image(
+                image: AssetImage("assets/" + images[index]),
+                height: 100,
+                width: 100,
+              ),
+              Text(names[index])
+            ],
+          ),
+        );
+      },
+    )),
+      Divider(
+        height: 10,
+        thickness: 1.5,
+        color: Colors.orange[400],
+      ),
+      // Text("Popular Items"),
+      // Container(
+      //     height: 150,
+      //     child: PageView.builder(
+      //         itemCount: names.length,
+      //         itemBuilder: (context, index) {
+      //           return Container(
+      //             child: Column(
+      //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //               children: [
+      //                 Image(
+      //                   image: AssetImage("assets/" + images[index]),
+      //                   height: 120,
+      //                   width: MediaQuery.of(context).size.width - 40,
+      //                 ),
+      //                 Text(names[index])
+      //               ],
+      //             ),
+      //           );
+      //         })),
+      // Divider(
+      //   height: 20,
+      //   thickness: 1.5,
+      //   color: Colors.orange[400],
+      // ),
+      Expanded(
+              child: ListView.separated(
+          // shrinkWrap: true,
+          // physics: NeverScrollableScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          itemCount: 10,
+          separatorBuilder: (BuildContext context,int index){
+    return SizedBox(
+        height:20
     );
+          },
+          itemBuilder: (BuildContext context,int index){
+          return Container(
+          width: 400,
+         height: 460,
+          child: WidgetFlipper(image:"assets/" + images[index],time:time[index]),
+        );
+        }),
+      )
+      
+    ]),
+        );
   }
 }

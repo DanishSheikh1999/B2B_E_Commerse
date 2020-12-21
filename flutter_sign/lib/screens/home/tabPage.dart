@@ -32,7 +32,9 @@ class _TabPageState extends State<TabPage> {
   }
   Widget build(BuildContext context) {
    
-    return Scaffold(
+    return 
+    
+    Scaffold(
         appBar: AppBar(
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -47,15 +49,29 @@ class _TabPageState extends State<TabPage> {
             ])          
          ),        
      ),      
+    backgroundColor: Colors.white,
       title: Text(
         "App Name",
         style: TextStyle(color: Colors.white),
       ),
+      //iconTheme: IconThemeData(color: Colors.orange[400]),
       actions: [
         // IconButton(icon: Icon(Icons.search), onPressed: (){
         //   showSearch(context: context, delegate: Search(hintText:"What are you looking for?"));
         // }),
-        IconButton(icon: Icon(Icons.shopping_cart,color: Colors.white,), onPressed: null)
+         Center(
+          child:Text("Trending",style: TextStyle(
+            fontSize: 16,
+            color: Colors.white
+          ),)),
+          SizedBox(width:10),
+        Center(
+          child:Text("Strategy",style: TextStyle(
+            fontSize: 16,
+            color: Colors.white
+          ),)),
+        IconButton(icon: Icon(Icons.shopping_cart,color: Colors.white
+      ), onPressed: null)
 
       ],
     ),
@@ -80,6 +96,7 @@ class _TabPageState extends State<TabPage> {
         ],)
     ),
     bottomNavigationBar: BottomNavigationBar(
+      //backgroundColor: Colors.orange[400],
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
         BottomNavigationBarItem(icon: Icon(Icons.search),label: "Search"),
@@ -87,6 +104,7 @@ class _TabPageState extends State<TabPage> {
       ],
       currentIndex: selectedIndex,
         selectedItemColor: Colors.orange[400],
+        // unselectedItemColor: Colors.white,
         onTap: _onItemTapped,
         mouseCursor: MouseCursor.uncontrolled,
     ),
