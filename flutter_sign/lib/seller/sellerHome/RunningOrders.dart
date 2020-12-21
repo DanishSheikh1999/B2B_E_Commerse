@@ -52,7 +52,7 @@ List<int> time = [240,750,850,230,420,350,740,600,210,300];
           itemBuilder: (BuildContext context,int index){
           return Container(
           width: 400,
-         height: 400,
+         height: 420,
           child: RCardView(image:"assets/" + images[index],time:time[index],name: names[index],),
         );
         }),

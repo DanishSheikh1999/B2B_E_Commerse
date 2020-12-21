@@ -99,12 +99,12 @@ void startTimer() {
               Text("Lorem Ipsum is simply dummy text of the printing and typeseting industry. Lorem Ipsum is simply dummy text of the printing and typeseting industry."),
         Divider(color: Colors.orange[400],),
                Container(
-                        width: 100,
+                        width: 300,
                         height: 40,
                         child: Stack(fit: StackFit.expand, children: [
                           
                           LinearProgressIndicator(
-                            value: .5,  //Needs to be updated as the orders are stacked or new orders are generated ranges between 0 to 1 .
+                            value: .3,  //Needs to be updated as the orders are stacked or new orders are generated ranges between 0 to 1 .
                             backgroundColor: Colors.white, // The total amount is to be taken from the seller .....the amount ordered / total amount goes into the value portion.
                             valueColor: AlwaysStoppedAnimation<Color>(
                                 Colors.orange[100]),
