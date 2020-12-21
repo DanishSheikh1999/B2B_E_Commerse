@@ -65,7 +65,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return StreamProvider<User>.value(
         value: AuthService().user,
-        child: MaterialApp(home:SellerTab()
+        child: MaterialApp(home:TabPage()
        
             ));
   }

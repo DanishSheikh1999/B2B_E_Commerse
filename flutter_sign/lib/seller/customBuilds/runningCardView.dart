@@ -98,7 +98,20 @@ void startTimer() {
               Divider(color: Colors.orange[400],),
               Text("Lorem Ipsum is simply dummy text of the printing and typeseting industry. Lorem Ipsum is simply dummy text of the printing and typeseting industry."),
         Divider(color: Colors.orange[400],),
-              Text("Meter")
+               Container(
+                        width: 100,
+                        height: 40,
+                        child: Stack(fit: StackFit.expand, children: [
+                          
+                          LinearProgressIndicator(
+                            value: .5,  //Needs to be updated as the orders are stacked or new orders are generated ranges between 0 to 1 .
+                            backgroundColor: Colors.white, // The total amount is to be taken from the seller .....the amount ordered / total amount goes into the value portion.
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                Colors.orange[100]),
+                          ),
+                          Center(child: Text("Unit Amount")),  // Amount from cloud to be written here
+                        ]),
+                      ),
             ],
           ));
 
